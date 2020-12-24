@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Goals!</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <nav>
+        <a href="{% url 'finances:index' %}">Home</a> |
+        <a href="{% url 'finances:accounts' %}">Accounts</a> |
+        <a href="{% url 'finances:transactions' %}">Transactions</a>
+      </nav>
+      <hr>
+    </div>
+    <h2>Goals' Status</h2>
+    <div class="account-display-table">
+        <table>
+          <tr>
+            <th>Goal</th>
+            <th>Target</th>
+            <th>Current Status</th>
+          </tr>
+          {% for goal in goals %}
+          <tr>
+            <td>{{ goal.goal_name }}</td>
+            <td>{{ goal.goal_target }}</td>
+            <td>{{ goal.current_status }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+    <hr>
+    <div class="add-goal">
+      <h2>Add a new goal</h2>
+      <form class="" action="index.html" method="post">
+        <label for="goal-name"><input type="text" name="goal_name" value="" placeholder="Goal Name"></label>
+        <label for="goal-target"><input type="number" name="goal_target" value="" placeholder="Goal Target"></label>
+        <label for="submit"><button type="submit" name="submit">Add Goal</button></label>
+      </form>
+    </div>
+  </body>
+</html>

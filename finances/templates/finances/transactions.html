@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Transactions!</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <nav>
+        <a href="{% url 'finances:index' %}">Home</a> |
+        <a href="{% url 'finances:accounts' %}">Accounts</a> |
+        <a href="{% url 'finances:goals' %}">Goals</a>
+      </nav>
+      <hr>
+    </div>
+    <h2>Transaction Details</h2>
+    <div class="account-display-table">
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Reason</th>
+            <th>Expense</th>
+            <th>Income</th>
+            <th>Balance</th>
+          </tr>
+          {% for transaction in transactions %}
+          <tr>
+            <td>{{ transaction.transaction_date }}</td>
+            <td>{{ transaction.transaction_reason }}</td>
+            {% if transaction.is_expense %}
+              <td>{{ transaction.transaction_amount }}</td>
+              <td></td>
+            {% else %}
+              <td></td>
+              <td>{{ transaction.transaction_amount }}</td>
+            {% endif %}
+            <td></td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+  </body>
+</html>

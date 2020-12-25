@@ -1,0 +1,11 @@
+{% extends 'finances/template.html' %}
+{% block body %}
+<div class="add-transaction">
+  <h2>Add a new Transaction</h2>
+  <form class="" action="{% url 'finances:transactions' %}" method="post">
+    {% csrf_token %}
+    {{ newTransactionForm.as_p }}
+    <label for="submit"><button type="submit" name="submit">Add Transaction</button></label>
+  </form>
+</div>
+{% endblock body %}

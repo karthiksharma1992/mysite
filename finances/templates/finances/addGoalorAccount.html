@@ -1,0 +1,22 @@
+{% extends 'finances/template.html' %}
+{% block body %}
+    <div class="add-account">
+      <h2>Add a new account</h2>
+      <form class="" action="{% url 'finances:accounts' %}" method="post">
+        {% csrf_token %}
+        {{ newAccountForm.as_p }}
+        <!--<label for="account-name"><input type="text" name="acc_name" value="" placeholder="Account Name"></label>
+        <label for="initial-balance"><input type="number" name="initial_balance" value="" placeholder="Initial Balance"></label>-->
+        <label for="submit"><button type="submit" name="add_account">Add Account</button></label>
+      </form>
+    </div>
+    <hr>
+    <div class="add-goal">
+      <h2>Add a new goal</h2>
+      <form class="" action="{% url 'finances:goals' %}" method="post">
+        {% csrf_token %}
+        {{ newGoalForm.as_p }}
+        <label for="submit"><button type="submit" name="add_goal">Add Goal</button></label>
+      </form>
+    </div>
+{% endblock body %}
